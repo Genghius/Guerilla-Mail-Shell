@@ -20,7 +20,6 @@ alias=$(echo $header | jq -j '.alias')
 stty -icanon
 while true; do
         list=$(curl -s "https://api.guerrillamail.com/ajax.php?f=get_email_list&sid_token=$sid&offset=0")
-        echo "$list\n\n\n" >> output.txt
         stats=$(printf "%s" "$list" | jq '.stats')
         count=$(printf "%s" "$list" | jq -j '.count')
 
